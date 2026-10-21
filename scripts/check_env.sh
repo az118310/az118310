@@ -27,6 +27,28 @@ else
     FAIL=1
 fi
 
+# --- Git 远程与认证 ---
+echo ""
+echo "[1b] Git 远程与认证"
+GIT_ROOT="D:/app/2026-10-21-21-42-36/agent-learning"
+if [ -d "$GIT_ROOT/.git" ]; then
+    echo "    remote: $(git -C "$GIT_ROOT" remote get-url origin 2>/dev/null || echo '未设置')"
+    echo "    分支:   $(git -C "$GIT_ROOT" branch --show-current 2>/dev/null || echo '?')"
+    echo "    提交数: $(git -C "$GIT_ROOT" rev-list --count HEAD 2>/dev/null || echo 0)"
+    if [ -f "C:/Users/Lee/.ssh/id_ed25519_github.pub" ]; then
+        echo "    ✓ SSH 密钥已生成"
+    else
+        echo "    ✗ SSH 密钥缺失"
+        FAIL=1
+    fi
+    if [ -f "C:/Users/Lee/.ssh/config" ]; then
+        echo "    ✓ SSH config 存在"
+    else
+        echo "    ✗ SSH config 缺失"
+        FAIL=1
+    fi
+fi
+
 # --- Python ---
 echo ""
 echo "[2] Python"
