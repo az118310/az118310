@@ -4,16 +4,37 @@
 
 ---
 
-## 步骤 1 · 建工作区并初始化 Git（10 分钟）
+## 步骤 1 · Git 环境（已帮你配好，只需验证）
 
+系统原本没有独立安装 Git，WorkBuddy 自带了一份 PortableGit。我已经把它接进你的用户 PATH，并配好全局身份：
+
+- git 可执行文件：`C:\Users\Lee\.workbuddy\binaries\PortableGit\current\cmd\git.exe`
+- 已加入用户 PATH（永久生效）
+- 已配置 `user.name = Lee`、`user.email = lee@workbuddy.local`、`init.defaultBranch = master`、`core.autocrlf = false`
+
+> **注意**：PATH 变更只对**新开的终端**生效。如果你当前的 PowerShell 窗口还报"无法识别 git"，关掉重开一个窗口即可。
+
+**验证**（新开一个 PowerShell 窗口执行）：
+```powershell
+git --version
+```
+预期输出 `git version 2.55.0.windows.3`
+
+**仓库已经建好了**，不用再 `git init`：
+```powershell
+cd D:/app/2026-10-21-21-42-36/agent-learning
+git log --oneline
+```
+预期看到：`e26de80 chore: 初始化 AI 开发学习工作区与 14 周转行计划`
+
+> ⚠️ **`current` 是稳定路径**：WorkBuddy 升级时 PortableGit 版本号会变（1.3.0 → 1.4.0），我建了 `current` 目录联接指向当前版本，路径不变。如果哪天 git 突然失效，去 `C:\Users\Lee\.workbuddy\binaries\PortableGit\versions\` 看新版本号，把联接重建一下即可。
+
+**接下来要做的**（第一次用 GitHub 时）：
 ```bash
 cd D:/app/2026-10-21-21-42-36/agent-learning
-git init
-git add .
-git commit -m "chore: 初始化 AI 开发学习工作区"
+git remote add origin https://github.com/你的用户名/你的仓库名.git
+git push -u origin master
 ```
-
-验收：`git log` 能看到一条提交
 
 ## 步骤 2 · 确认 Python 环境（5 分钟）
 
