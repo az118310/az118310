@@ -32,6 +32,34 @@ except ImportError:
     print("请先安装依赖: pip install openai", file=sys.stderr)
     sys.exit(1)
 
+
+# ------------------------------------------------------------------
+# 加载 .env（与 basic_call.py 保持一致的实现方式）
+# ------------------------------------------------------------------
+def load_dotenv(path: str) -> None:
+    if not os.path.exists(path):
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, val = line.partition("=")
+            key = key.strip()
+            val = val.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = val
+
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+for _up in range(3):
+    _candidate = os.path.join(_HERE, ".env")
+    if os.path.exists(_candidate):
+        load_dotenv(_candidate)
+        break
+    _HERE = os.path.dirname(_HERE)
+
+
 BASE_URL = os.getenv("LLM_BASE_URL", "https://api.deepseek.com/v1")
 MODEL = os.getenv("LLM_MODEL", "deepseek-chat")
 

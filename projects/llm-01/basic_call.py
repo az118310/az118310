@@ -30,6 +30,36 @@ except ImportError:
     print("请先安装依赖: pip install openai", file=sys.stderr)
     sys.exit(1)
 
+
+# ------------------------------------------------------------------
+# 加载 .env（无需额外依赖，手动解析，避免多装 python-dotenv）
+# 优先级：真实环境变量 > .env 文件
+# ------------------------------------------------------------------
+def load_dotenv(path: str) -> None:
+    if not os.path.exists(path):
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, val = line.partition("=")
+            key = key.strip()
+            val = val.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = val
+
+
+# 从项目根目录往上找 .env
+_HERE = os.path.dirname(os.path.abspath(__file__))
+for _up in range(3):
+    _candidate = os.path.join(_HERE, ".env")
+    if os.path.exists(_candidate):
+        load_dotenv(_candidate)
+        break
+    _HERE = os.path.dirname(_HERE)
+
+
 # ------------------------------------------------------------------
 # 配置区
 # ------------------------------------------------------------------
@@ -60,9 +90,13 @@ PROMPT = """
 # ------------------------------------------------------------------
 def main() -> None:
     if not API_KEY:
-        print("未检测到 OPENAI_API_KEY 环境变量。", file=sys.stderr)
-        print("Windows PowerShell 设置方式: $env:OPENAI_API_KEY='sk-xxx'", file=sys.stderr)
-        print("Git Bash 设置方式: export OPENAI_API_KEY=sk-xxx", file=sys.stderr)
+        print("未检测到 API Key。", file=sys.stderr)
+        print("", file=sys.stderr)
+        print("推荐做法（写进 .env，一次配置长期有效）:", file=sys.stderr)
+        print("  .\\scripts\\py.cmd scripts\\setup_key.py --interactive", file=sys.stderr)
+        print("", file=sys.stderr)
+        print("临时做法（只对当前窗口有效）:", file=sys.stderr)
+        print("  $env:OPENAI_API_KEY='sk-xxx'", file=sys.stderr)
         sys.exit(1)
 
     client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
