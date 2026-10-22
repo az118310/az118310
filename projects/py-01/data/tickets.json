@@ -1,0 +1,122 @@
+[
+  {
+    "id": "T20261001001",
+    "customer": "小圆脸的日常",
+    "product": "法式复古碎花连衣裙",
+    "price": 189.0,
+    "intent": "size_advice",
+    "channel": "旺旺",
+    "urgency": "normal",
+    "status": "pending",
+    "created_at": "2026-10-01 09:12:00",
+    "message": "我165cm 100斤有点肩宽穿M还是L？大概多久能到？"
+  },
+  {
+    "id": "T20261001002",
+    "customer": "爱睡觉的鱼",
+    "product": "高腰显瘦阔腿牛仔裤",
+    "price": 159.0,
+    "intent": "shipping",
+    "channel": "手机",
+    "urgency": "high",
+    "status": "pending",
+    "created_at": "2026-10-01 10:03:00",
+    "message": "怎么还没发货？都两天了，我要今天能发出来"
+  },
+  {
+    "id": "T20261001003",
+    "customer": "不吃香菜的兔子",
+    "product": "纯棉宽松短袖T恤",
+    "price": 69.0,
+    "intent": "quality_complaint",
+    "channel": "旺旺",
+    "urgency": "high",
+    "status": "pending",
+    "created_at": "2026-10-01 11:47:00",
+    "message": "收到的衣服有股味道，洗了还是很大，能退吗？"
+  },
+  {
+    "id": "T20261001004",
+    "customer": "干饭人本干",
+    "product": "复古港风牛仔外套",
+    "price": 259.0,
+    "intent": "price_negotiation",
+    "channel": "手机",
+    "urgency": "normal",
+    "status": "replied",
+    "created_at": "2026-10-01 14:20:00",
+    "message": "能不能便宜点，200出我就下单"
+  },
+  {
+    "id": "T20261001005",
+    "customer": "一只小甜饼",
+    "product": "奶油白羊羔绒抱枕",
+    "price": 49.0,
+    "intent": "presale",
+    "channel": "旺旺",
+    "urgency": "normal",
+    "status": "pending",
+    "created_at": "2026-10-02 09:05:00",
+    "message": "这个什么时候发货？现在拍还是等预售结束？"
+  },
+  {
+    "id": "T20261001006",
+    "customer": "困困熊先生",
+    "product": "加绒加厚直筒牛仔裤",
+    "price": 199.0,
+    "intent": "size_advice",
+    "channel": "手机",
+    "urgency": "normal",
+    "status": "replied",
+    "created_at": "2026-10-02 10:38:00",
+    "message": "我180cm 130斤，这个会不会太紧"
+  },
+  {
+    "id": "T20261001007",
+    "customer": "柠檬不酸",
+    "product": "韩版宽松卫衣",
+    "price": 129.0,
+    "intent": "shipping",
+    "channel": "旺旺",
+    "urgency": "normal",
+    "status": "pending",
+    "created_at": "2026-10-02 15:22:00",
+    "message": "江浙沪一般几天能到？"
+  },
+  {
+    "id": "T20261001008",
+    "customer": "打工人小张",
+    "product": "职场通勤手提包",
+    "price": 329.0,
+    "intent": "quality_complaint",
+    "channel": "手机",
+    "urgency": "high",
+    "status": "pending",
+    "created_at": "2026-10-03 08:51:00",
+    "message": "包带子开线了，这也叫质量？要求退"
+  },
+  {
+    "id": "T20261001009",
+    "customer": "养生朋友",
+    "product": "艾草足浴包 30片装",
+    "price": 39.9,
+    "intent": "other",
+    "channel": "旺旺",
+    "urgency": "low",
+    "status": "closed",
+    "created_at": "2026-10-03 13:16:00",
+    "message": "这个和普通的足浴包有啥区别"
+  },
+  {
+    "id": "T20261001010",
+    "customer": "阿黄不是狗",
+    "product": "加厚珊瑚绒地垫",
+    "price": 29.9,
+    "intent": "other",
+    "channel": "手机",
+    "urgency": "low",
+    "status": "closed",
+    "created_at": "2026-10-03 19:40:00",
+    "message": "能机洗吗"
+  }
+]
