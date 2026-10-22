@@ -59,7 +59,7 @@ print("\n[3] 第一条工单的字段:")
 for key in first:
     # TODO: 把 f-string 里的 ??? 换成能打印「字段名 + 值」的形式
     # 提示：f"字段名={值}" 需要把 key 放进花括号
-    print(f"    ??? {key}: {first[key]}")
+    print(f"    - {key}: {first[key]}")
 
 # ------------------------------------------------------------------
 # 4. 遍历：把每条工单都看一遍
@@ -71,7 +71,7 @@ print("\n[4] 所有工单概要:")
 for t in tickets:
     # TODO: 换成一行输出，格式为：T20261001001 | 小圆脸的日常 | 法式复古碎花连衣裙
     # 提示：用 f-string，t["id"] t["customer"] t["product"]
-    print(f"    ???")
+    print(f"    {t['id']} {t['customer']},{t['product']}")
 
 # ------------------------------------------------------------------
 # 5. 筛选：只要 status 是 pending 的工单
@@ -83,6 +83,8 @@ pending = []
 for t in tickets:
     # TODO: 补上判断条件，只把 status 为 "pending" 的工单加进 pending
     # 提示：if t["status"] == "???":
+    if t["status"] == "pending":
+        pending.append(t)
     pass
 
 print(f"\n[5] 待处理工单: {len(pending)} 条")
@@ -98,6 +100,8 @@ counts = {}
 for t in pending:
     # TODO: 统计每个 intent（意图）出现了几次，结果放进 counts
     # 提示：键是 t["intent"]，值是次数
+    intent = t["intent"]
+    counts[intent] = counts.get(intent,0)+1
     pass
 
 print("[6] 待处理工单的意图分布:")
@@ -113,8 +117,17 @@ for intent, n in counts.items():
 
 # TODO: 算出 quality_complaint 类待处理工单的总金额，存进 risk_amount
 risk_amount = 0
+for t in pending:
+    if t["intent"] == "quality_complaint":
+        risk_amount += t["price"]
+
+risk_amount_b = sum(
+    t["price"] for t in pending if t["intent"] == "quality_complaint"
+)
+
 
 print(f"\n[7] 质量投诉类待处理工单金额合计: {risk_amount:.2f} 元")
+print(f"\n[7] 质量投诉类待处理工单金额合计：{risk_amount_b:.2f}元")
 
 # ==================================================================
 # 预期输出（对照检查）

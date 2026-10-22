@@ -24,3 +24,10 @@ env/
 tmp/
 *.tmp
 *.log
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 临时文件
+.env.local
