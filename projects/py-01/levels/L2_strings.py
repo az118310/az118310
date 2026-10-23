@@ -48,7 +48,7 @@ print(f"第二个字：{product[1]}")
 
 # 题 2-1：打印倒数第二个字（答案是"衣"）
 # 提示：负索引，-1 是最后一个，-2 就是倒数第二个
-index = ___
+index = -2
 print(f"倒数第二个字：{product[index]}")
 
 
@@ -67,8 +67,8 @@ print(f"切片[:3]：{product[:3]}")       # 从开头到第 3 个字（不含 3
 
 # 题 2-2：打印"复古碎花"这 4 个字
 # 提示："法式复古碎花连衣裙"里，"复古"从第 2 个字开始，"碎花"到第 5 个字结束
-start = ___
-end = ___
+start = 2
+end = 6
 print(f"切片：{product[start:end]}")
 
 
@@ -82,7 +82,7 @@ print(f"包含'连衣裙'：{'连衣裙' in product}")
 print(f"包含'衬衫'：{'衬衫' in product}")
 
 # 题 2-3：判断商品是否包含"碎花"，打印 True/False
-word = ___
+word = "碎花"
 print(f"包含'碎花'：{word in product}")
 
 
@@ -96,7 +96,7 @@ print(product.replace("复古", "港风"))
 
 # 题 2-4：把"碎花"替换成"印花"，打印结果
 # 提示：方法的第一个参数是要找的，第二个是要换成的
-result = product.___
+result = "碎花","港风"
 print(f"替换后：{result}")
 
 
@@ -115,7 +115,7 @@ print(f"数量：{len(parts)}")
 
 # 题 2-5：把 "尺码齐全,顺丰包邮,七天无理由" 拆开，打印列表
 new_tags = "尺码齐全,顺丰包邮,七天无理由"
-print(f"拆分后：{new_tags.___}")
+print(f"拆分后：{new_tags.split(",")}")
 
 
 # ================================================================
@@ -128,7 +128,7 @@ messy = "   连衣裙   "
 print(f"原始：[{messy}]")     # 用 [] 包起来才能看出空格
 
 # 题 2-6：打印去掉两端空格后的内容
-clean = messy.___
+clean = "sprip"
 print(f"去空格后：[{clean}]")
 
 
@@ -144,7 +144,7 @@ print(f"以'法式'开头：{product.startswith('法式')}")
 print(f"以'韩式'开头：{product.startswith('韩式')}")
 
 # 题 2-7：判断 product 是否以"碎花"结尾（注意：连衣裙结尾不是碎花，是 False）
-ends = product.___
+ends = product.endswith("碎花")
 print(f"以'碎花'结尾：{ends}")
 
 
@@ -158,7 +158,7 @@ print(f"位置：{product.find('碎花')}")
 print(f"位置：{product.find('不存在')}")
 
 # 题 2-8：找"复古"在 product 里的位置（答案是 2）
-pos = product.___
+pos = product.find("复古")
 print(f"位置：{pos}")
 
 
@@ -184,9 +184,9 @@ code = parts[0].split("款号")[1]
 color = parts[1].split("主色")[1]
 material = parts[2].split("面料")[1]
 
-label1 = ___
-label2 = ___
-label3 = ___
+label1 = "款号"
+label2 = "主色"
+label3 = "面料"
 
 print(f"{label1}：{code}")
 print(f"{label2}：{color}")
