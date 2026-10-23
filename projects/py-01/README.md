@@ -10,6 +10,14 @@
 **学习入口在 `levels/` 目录**（新拆的 5 关，零基础起步）。
 `levels/README.md` 是详细说明。
 
+| 关卡 | 状态 |
+|---|---|
+| L1 变量/字符串/数字 | ✅ 已通关（批改 PASS） |
+| L2 字符串方法 | ⏳ 12 题对 10 题，还差 2 处（题 2-4 替换、题 2-6 去空格） |
+| L3 列表 | ⬜ 未开始 |
+| L4 字典 | ⬜ 未开始 |
+| L5 条件与循环 | ⬜ 未开始 |
+
 ---
 
 ## 快速开始
@@ -31,6 +39,8 @@ cd D:\app\2026-10-21-21-42-36\agent-learning
 ```
 py-01/
 ├── levels/                  ← 学习入口（先看 levels/README.md）
+│   ├── templates/           题目源头（改题改这里）
+│   │   ├── L1.tpl ~ L5.tpl
 │   ├── L1_variables.py      变量/字符串/数字
 │   ├── L2_strings.py        字符串方法
 │   ├── L3_lists.py          列表
@@ -55,6 +65,18 @@ py-01/
 - **L8 类**（把工单封装成 Ticket 类）
 
 这三关合起来 = ROADMAP 里 10/22 定的产出物：**「能手写一个读写 JSON 的类」**。
+
+---
+
+## 改题目（维护用，平时不用管）
+
+题目源头在 `levels/templates/L*.tpl`。改完模板后运行：
+
+```powershell
+.\scripts\py.cmd projects\py-01\levels\generate.py
+```
+
+只重生成答案版，不会碰你的作答。
 
 ---
 

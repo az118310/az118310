@@ -5,7 +5,7 @@
 关卡 5 · 条件判断与循环控制
 ═══════════════════════════════════════════════════════════════
 
-本关只学：if / elif / else、break、continue
+本关只学：if / elif / else、and / or / not、break、continue
 
 现实场景：
   if 客户在催发货 → 转人工
@@ -51,9 +51,10 @@ if status == "pending":
 
 # 条件成立才执行；不成立就跳过
 
-# TODO 5-1：判断 price 小于 100 时，打印"低于100元"
+# 题 5-1：price 是 89.0，小于 100 的时候打印"低于100元"
+# 提示：小于号是 <，条件写 if price < 数字:
 price = 89.0
-if price < 100:            # TODO 5-1：把这个 100 改成你想要的数
+if price < ___:
     print("低于100元")
 
 
@@ -75,12 +76,12 @@ else:
 
 # elif 是"否则，如果"，从上往下只匹配第一个成立的
 
-# TODO 5-2：补上"价格"这个分支
-# 提示：intent == "price" 时打印"问价格"
+# 题 5-2：补上"问价格"这个分支 —— intent2 是 "price" 时打印"问价格"
+# 提示：照抄上面的写法，用 elif
 intent2 = "price"
 if intent2 == "size_advice":
     print("尺码咨询")
-elif intent2 == "price":   # TODO 5-2：确认这里比较的是哪个意图
+elif intent2 == ___:
     print("问价格")
 else:
     print("其他问题")
@@ -90,7 +91,7 @@ else:
 # 题目 3 · 多条件组合
 # ================================================================
 #
-# 【先猜】下面哪些会打印？
+# 【先猜】下面哪些会打印？（一共 4 个 if）
 #
 a, b, c = 5, 3, 8
 if a > b:
@@ -102,10 +103,12 @@ if a > 10 or c > a:
 if not (a > b):
     print("a不大于b")
 
-# TODO 5-3：判断金额是否在 100 到 500 之间（不含两端）
-# 提示：and 连接两个条件
+# and = 两个都成立；or = 有一个成立就行；not = 取反
+
+# 题 5-3：金额在 100 到 500 之间（不含两端）时打印"金额在100到500之间"
+# 提示：两个条件要同时成立，用 and 连起来
 amount = 250
-if amount > 100 and amount < 500:   # TODO 5-3：确认用了 and 连接两个条件
+if ___:
     print("金额在100到500之间")
 
 
@@ -126,9 +129,18 @@ if order["status"] == "pending":
         if order["price"] > 300:
             print("    → 金额较高，转主管")
 
-# TODO 5-4：让上面这段在 order 的 status 是 "replied" 时，
-#           打印 "已完成工单"（提示：把第一个 if 改成 else 分支）
-# 参考：把 print("待处理工单") 那行改成 else: print("已完成工单")
+# 题 5-4：补全下面这段 —— status 是 "pending" 就打印"待处理工单"，
+#           intent 是 "quality_complaint" 就再打印"  → 质量问题，优先处理"
+#           其他情况打印"已完成工单"
+# 提示：内层的 if 要再往右缩进 4 个空格
+order2 = {"status": "pending", "intent": "quality_complaint", "price": 329.0}
+
+if order2["status"] == ___:
+    print("待处理工单")
+    if order2["intent"] == ___:
+        print("  → 质量问题，优先处理")
+else:
+    print("已完成工单")
 
 
 # ================================================================
@@ -150,13 +162,13 @@ for t in tickets:
         continue          # 不是待处理的，跳过这次循环
     print(f"  处理 {t['id']}  金额 {t['price']}")
 
-# TODO 5-5：改成只处理金额大于 100 的待处理工单
-# 提示：在 if 条件里加一个 and 条件，条件不满足就 continue
+# 题 5-5：改成只处理金额大于 100 的待处理工单（其余全部跳过）
+# 提示：加一个 if，条件不满足就 continue；注意"大于 100"取反是"小于等于 100"
 print("【金额>100 版】")
 for t in tickets:
     if t["status"] != "pending":
         continue
-    if t["price"] <= 100:      # TODO 5-5：确认这里的比较运算符
+    if t["price"] <= ___:
         continue
     print(f"  处理 {t['id']}  金额 {t['price']}")
 
@@ -175,12 +187,12 @@ for t in tickets:
         print(f"  → 找到了：{t['id']}")
         break
 
-# TODO 5-6：改成找第一条价格超过 100 的工单就停
-# 提示：把条件里的 200 改成 100
+# 题 5-6：改成找第一条价格超过 100 的工单就停
+# 提示：把门槛数字填进去
 print("【找价格>100】")
 for t in tickets:
     print(f"检查 {t['id']}")
-    if t["price"] > 100:       # TODO 5-6：把 100 改成你想要的门槛
+    if t["price"] > ___:
         print(f"  → 找到了：{t['id']}")
         break
 
@@ -191,9 +203,10 @@ for t in tickets:
 #
 # 这是本关的验收，也是你未来主项目的核心逻辑雏形。
 #
-# TODO 5-7：补全下面三个分支，让它输出：
+# 题 5-7：补全下面两处，让它输出：
 #
 #     T1 -> 尺码咨询
+#     T2 -> 催发货
 #     T3 -> 质量问题（高风险）
 #     T4 -> 其他问题
 #
@@ -207,9 +220,10 @@ tickets2 = [
 for t in tickets2:
     if t["intent"] == "size_advice":
         print(f"{t['id']} -> 尺码咨询")
+    elif t["intent"] == ___:
+        print(f"{t['id']} -> 催发货")
     elif t["intent"] == "quality_complaint":
-        # 题：质量问题还要看金额，超过 300 就标"高风险"
-        if t["price"] > 300:       # TODO 5-7：把 300 改成高风险门槛
+        if t["price"] > ___:
             print(f"{t['id']} -> 质量问题（高风险）")
         else:
             print(f"{t['id']} -> 质量问题")
@@ -220,14 +234,13 @@ for t in tickets2:
 # ================================================================
 # 【答案】
 # ================================================================
-# 5-1:  <
-# 5-2:  'price'
-# 5-3:  and
-# 5-4:  把 print("待处理工单") 改成 else: 后接 print("已完成工单")
-#       注意 else 要和 if 对齐（同样的缩进）
-# 5-5:  <=
+# 5-1:  100
+# 5-2:  "price"
+# 5-3:  amount > 100 and amount < 500
+# 5-4:  "pending"  和  "quality_complaint"
+# 5-5:  100
 # 5-6:  100
-# 5-7:  300
+# 5-7:  "shipping"  和  300
 #
 # ───────────────────────────────────────────────────────────────
 # 跑通后进入：L6_functions.py（函数）

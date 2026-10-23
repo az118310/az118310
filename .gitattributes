@@ -1,0 +1,7 @@
+# 只管 levels 目录的行尾符：
+#   仓库内存 LF，Windows 上 checkout 成 CRLF
+# 这样生成器写出来的文件跟你用记事本/VS Code 改的文件一致，
+# git diff 只看真实内容改动，不会整文件变红。
+projects/py-01/levels/** text eol=crlf
+projects/py-01/levels/*.py   text eol=crlf
+projects/py-01/levels/*.tpl  text eol=crlf
